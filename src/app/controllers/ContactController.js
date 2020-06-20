@@ -10,7 +10,7 @@ class ContactController {
         return res.status(400).json({ error: 'User not exists' });
       }
 
-      const contacts = await Contact.find();
+      const contacts = await Contact.find().sort({ createdAt: 'desc' });
 
       return res.json(contacts);
     } catch (error) {
