@@ -21,12 +21,15 @@ routes.get('/', (req, res) => res.send('Cabeça de buceta'));
 routes.post('/contacts', ContactController.store);
 
 routes.get('/files/imgBanner', DashClientController.index);
-routes.get('/files', FileController.index);
 
+routes.get('/files', FileController.index);
 routes.post('/files', upload.single('file'), FileController.store);
+routes.put('/files', FileController.update);
+
+routes.use(authMiddleware);
 
 routes.post('/files/imgBanner', DashClientController.store);
-routes.use(authMiddleware);
+routes.put('/files/imgBanner', DashClientController.update);
 
 routes.get('/user', UserController.index);
 routes.put('/user', UserController.update);

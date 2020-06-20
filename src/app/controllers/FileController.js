@@ -7,7 +7,7 @@ class FileController {
 
       return res.json(files);
     } catch (error) {
-      return res.status(500).send('Error fetching files' + error);
+      return res.status(500).send(`Error fetching files${error}`);
     }
   }
 
@@ -18,12 +18,33 @@ class FileController {
       const file = await File.create({
         name,
         path,
-        url: `${process.env.APP_URL}files/${path}`,
+        url: `${process.env.APP_URL}/files/${path}`,
+        // url: `http://localhost:3333/files/${path}`,
       });
 
       return res.json(file);
     } catch (error) {
-      return res.status(500).send('Error adding file' + error);
+      return res.status(500).send(`Error adding file${error}`);
+    }
+  }
+
+  async update(req, res) {
+    try {
+      const { id, urlSale } = req.body;
+
+      const imgExists = await File.findOne({ _id: id });
+
+      if (!imgExists) {
+        return res.status(400).json({ error: 'Image already exists' });
+      }
+
+      await imgExists.updateOne({
+        urlSale,
+      });
+
+      return res.json(imgExists);
+    } catch (error) {
+      return res.status(500).send(`Error editing image!${error}`);
     }
   }
 }

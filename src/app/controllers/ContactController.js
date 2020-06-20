@@ -14,7 +14,7 @@ class ContactController {
 
       return res.json(contacts);
     } catch (error) {
-      return res.status(500).send('Error fetching contacts' + error);
+      return res.status(500).send(`Error fetching contacts${error}`);
     }
   }
 
@@ -32,7 +32,7 @@ class ContactController {
 
       return res.json(contact);
     } catch (error) {
-      return res.status(500).send('Error adding contact' + error);
+      return res.status(500).send(`Error adding contact${error}`);
     }
   }
 
@@ -51,7 +51,7 @@ class ContactController {
       });
       return res.json(contact);
     } catch (error) {
-      return res.status(500).send('Error editing read contact' + error);
+      return res.status(500).send(`Error editing read contact${error}`);
     }
   }
 }
