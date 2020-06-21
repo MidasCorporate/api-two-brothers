@@ -16,12 +16,8 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
-    this.server.use(
-      cors({
-        origin: 'https://5eefc95f60f39b00096b54a5--twobrothersms.netlify.app',
-      })
-    );
     this.server.use(
       '/files',
       express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
