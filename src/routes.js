@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import express, { Router } from 'express';
 import multer from 'multer';
 
 import multerConfig from './config/multer';
@@ -12,6 +12,15 @@ import authMiddleware from './app/Middlewares/auth';
 
 const routes = new Router();
 const upload = multer(multerConfig);
+
+express.use(function (request, response, next) {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 
 routes.post('/user', UserController.store);
 routes.post('/sessions', SessionController.store);
