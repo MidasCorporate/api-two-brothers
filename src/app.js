@@ -18,8 +18,10 @@ class App {
   middlewares() {
     this.server.use(
       cors({
-        origin: 'https://twobrothersms.com.br/',
-        optionsSuccessStatus: 200,
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        preflightContinue: false,
+        optionsSuccessStatus: 204,
       })
     );
     this.server.use(express.json());
