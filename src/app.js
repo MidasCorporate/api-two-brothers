@@ -16,7 +16,11 @@ class App {
   }
 
   middlewares() {
-    this.server.use(cors());
+    this.server.use(
+      cors({
+        origin: 'http://twobrothersms.com.br/',
+      })
+    );
     this.server.use(express.json());
     this.server.use(
       '/files',
