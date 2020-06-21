@@ -19,6 +19,7 @@ class App {
     this.server.use(
       cors({
         origin: 'https://twobrothersms.com.br',
+        optionsSuccessStatus: 200,
       })
     );
     this.server.use(express.json());
