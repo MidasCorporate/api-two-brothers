@@ -16,7 +16,7 @@ const upload = multer(multerConfig);
 routes.post('/user', UserController.store);
 routes.post('/sessions', SessionController.store);
 
-routes.get('/', (req, res) => res.send('Fala seu cabeça de cachão'));
+routes.get('/', (req, res) => res.send('Fala seu cabeça de colchão'));
 
 routes.post('/contacts', ContactController.store);
 
