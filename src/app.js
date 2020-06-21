@@ -16,7 +16,11 @@ class App {
   }
 
   middlewares() {
-    this.server.use(cors());
+    this.server.use(
+      cors({
+        origin: 'https://twobrothersms.com.br',
+      })
+    );
     this.server.use(express.json());
     this.server.use(
       '/files',
@@ -25,7 +29,7 @@ class App {
   }
 
   routes() {
-    this.server.options('*', cors());
+    // this.server.options('*', cors());
     this.server.use(routes);
     // this.server.use(Sentry.Handlers.errorHandler());
   }
