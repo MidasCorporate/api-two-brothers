@@ -18,7 +18,7 @@ class App {
   middlewares() {
     this.server.use(
       cors({
-        origin: 'https://twobrothersms.com.br',
+        origin: 'https://twobrothersms.com.br/',
         optionsSuccessStatus: 200,
       })
     );
