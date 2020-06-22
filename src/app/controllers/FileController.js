@@ -20,6 +20,7 @@ class FileController {
         path,
         url: `${process.env.FILE_URL}files/${path}`,
         // url: `https://apitwobrothers.site/files/${path}`,
+        // url: `https://apitwobrothers.site/files/${path}`,
       });
 
       return res.json(file);
